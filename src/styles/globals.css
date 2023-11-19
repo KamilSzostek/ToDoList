@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;600;700&display=swap');
+
+:root {
+  --font-mono: 'Roboto Condensed', 'Ubuntu Monospace';
+
+  --primary-color: #2E2E34;
+  --secondary-color: #C7E9B7; 
+  --trimary-color: #EBEBEC;
+  --primary-light: #404145;
+  --base-gradient: #ffff linear-gradient(
+    45deg,
+    #c7e9b77d,
+    #ebebec55
+  );
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-mono), sans-serif;
+}
+
+html,
+body {
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  background: var(--base-gradient);
+  font-size: 1rem;
+  overflow-x: hidden;
+}
+

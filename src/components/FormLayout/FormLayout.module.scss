@@ -1,0 +1,45 @@
+.formContainer {
+    width: 320px;
+    background-color: #ffffff7d;
+    border-radius: 1em;
+    z-index: 2;
+    overflow: hidden;
+
+    .formTitle {
+        padding-block: .5em;
+        background-color: var(--primary-color);
+        color: var(--trimary-color);
+        font-size: 2.4rem;
+        text-align: center;
+    }
+
+    label {
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    input {
+        width: 140px;
+        height: 25px;
+        padding-left: .5em;
+        font-size: 1.6rem;
+        border: .5px solid var(--primary-light);
+        border-radius: .25em;
+        opacity: .8;
+    }
+
+    input:focus {
+        opacity: 1;
+    }
+
+    button {
+        padding: .5em;
+        width: 100%;
+    }
+}
+
+@media (min-width: 650px) {
+    .formContainer {
+        width: 400px;
+    }
+}

@@ -1,0 +1,40 @@
+.basic{
+    width: 140px;
+    height: 4.2rem;
+    background-color: var(--trimary-color);
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: .5em;
+    font-size: 1.6rem;
+    font-weight: 600;
+    box-shadow: 0 0 5px #4041457b;
+    transition: .5s;
+    &:hover{
+        background-color: #fff;
+        border-color: var(--trimary-color);
+        color: var(--primary-color);
+        .icon{
+            color: var(--primary-color);
+        }
+    }
+    .icon{
+        width: 17px;
+        height: 17px;
+        color: var(--primary-color);
+        transition: .5s;
+    }
+}
+.isDark{
+    background-color: var(--primary-light);
+    color: var(--trimary-color);
+    &:hover{
+        background-color: var(--primary-color);
+        border-color: var(--primary-light);
+        color: var(--trimary-color);
+        .icon{
+            color: var(--trimary-color);
+        }
+    }
+    .icon{
+        color: var(--trimary-color);
+    }
+}

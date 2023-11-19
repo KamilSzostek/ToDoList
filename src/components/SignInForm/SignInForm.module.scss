@@ -1,0 +1,20 @@
+.signInForm {
+    a {
+        color: var(--primary-color);
+        font-weight: 600;
+
+        &:hover {
+            color: var(--primary-light);
+            cursor: pointer;
+        }
+    }
+}
+
+.error {
+    margin-bottom: .25em;
+    padding: .25em .5em;
+    background-color: var(--trimary-color);
+    border-radius: .5em;
+    color: orangered;
+    font-weight: 600;
+}
