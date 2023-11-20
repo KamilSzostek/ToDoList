@@ -32,7 +32,7 @@ const SignInForm: FC = () => {
         onSubmit: async (values: IFormValues) => {
             const status = await signIn(
                 'credentials',
-                { login: values.login, password: values.password, redirect: false },
+                { redirect: false, login: values.login, password: values.password },
             )
             if (status?.ok)
                 router.push('/todo')

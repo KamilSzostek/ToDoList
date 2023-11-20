@@ -30,6 +30,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
         res,
         authOptions
     )
+    console.log(token);
     if (!token) return {
         redirect: {
             destination: '/',

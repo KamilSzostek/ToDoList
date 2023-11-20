@@ -15,10 +15,13 @@ interface IFormValues {
 
 const validate = async (values: IFormValues) => {
     const errors: IFormValues = {};
-    if (!values.login)
+    if (!values.login){
         errors.login = 'Login jest wymagany'
+        return errors
+    }
     else if (values.login.length < 6) {
         errors.login = 'Login musi zawierać conajmniej 6 znaków.'
+        return errors
     }
     else {
         const res = await fetch(`/api/users/${values.login}`)
@@ -28,14 +31,17 @@ const validate = async (values: IFormValues) => {
             values.login = ''
             values.password = ''
             values.repassword = ''
+            return errors
         }
     }
-    if (!values.password || !values.repassword)
-        errors.repassword = "Hasło i powtórzenie hasła są wymagane"
+    if (!values.password || !values.repassword){
+        errors.login = "Hasło i powtórzenie hasła są wymagane"
+        return errors
+    }
     else if (values.password !== values.repassword) {
         values.password = ''
         values.repassword = ''
-        errors.repassword = 'Hasła nie mogą się różnić.'
+        errors.login = 'Hasła nie mogą się różnić.'
     }
     return errors
 };
@@ -62,7 +68,7 @@ const SignInForm: FC = () => {
             if (result.status) {
                 const status = await signIn(
                     'credentials',
-                    { login: values.login, password: values.password, redirect: false },
+                    { redirect: false, login: values.login, password: values.password },
                 )
                 status?.ok && router.push('/todo')
             }

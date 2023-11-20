@@ -16,8 +16,7 @@ export const authOptions = {
       },
       async authorize(credentials) {
         if (credentials) {
-          const client = await MongoClient.connect(
-            `${process.env.MONGODB_CONNECTION_STRING}`
+          const client = await MongoClient.connect(`${process.env.MONGODB_CONNECTION_STRING}`
           );
           const users = client?.db().collection("ToDoUsers");
           const result = await users.findOne({
