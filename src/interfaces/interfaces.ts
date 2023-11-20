@@ -18,6 +18,6 @@ export interface ITask{
     name: string
     description?: string
     algorithm?: string[]
-    dateTimeStart: Timestamp
-    dateTimeEnd: Timestamp
+    dateTimeStart: string
+    dateTimeEnd?: string
 }

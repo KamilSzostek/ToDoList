@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import BaseLayout from '@/components/BaseLayout/BaseLayout'
 import SignInHeroBg from './../../public/assets/login.jpg'
-import SignInForm from '@/components/SignInForm/SignInForm'
+import SignInForm from '@/features/Sign/SignInForm/SignInForm'
 import FormLayout from '@/components/FormLayout/FormLayout'
 import { GetServerSideProps } from 'next/types';
 import { getServerSession } from 'next-auth/next';

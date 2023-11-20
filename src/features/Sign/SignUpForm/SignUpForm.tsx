@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useRouter } from 'next/router'
 import { useFormik } from 'formik';
 import { signIn } from 'next-auth/react';
-import BaseButton from '../BaseButton/BaseButton';
+import BaseButton from '../../../components/BaseButton/BaseButton';
 import { faFingerprint } from '@fortawesome/free-solid-svg-icons';
 import styles from '../SignInForm/SignInForm.module.scss'
 

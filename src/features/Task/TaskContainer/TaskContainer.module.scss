@@ -1,0 +1,14 @@
+@import '../../../styles/mixin';
+.taskContainer{
+    width: 300px;
+    min-height: 150px;
+    max-height: 500px;
+    border-radius: 1em;
+    box-shadow: 0 0 5px #40414585;
+    // overflow: hidden;
+
+    .taskTitle{
+        @include title;
+        // width: ;
+    }
+}

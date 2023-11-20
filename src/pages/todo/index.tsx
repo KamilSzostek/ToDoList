@@ -1,20 +1,29 @@
-import { FC } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next/types';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '../api/auth/[...nextauth]';
 import BaseLayout from '@/components/BaseLayout/BaseLayout'
 import TaskLayout from '@/features/Task/TaskLayout/TaskLayout'
 import NavBar from '@/components/NavBar/NavBar'
+import { IUser } from '@/interfaces/interfaces';
+import { StoreContext } from '@/store/StoreProvider';
+import { getCollectionDB } from '@/helpers/dbConnection';
 
 interface IToDoProps {
+    user: IUser
 }
 
-const ToDo: FC<IToDoProps> = (props) => {
+const ToDo: FC<IToDoProps> = ({ user }) => {
+    const context = useContext(StoreContext)
+    useEffect(() => {
+        context.setLoginHandler && context.setLoginHandler(user.login)
+        context.setTaskshandler && context.setTaskshandler(user.tasks)
+    }, [user])
     return (
         <BaseLayout>
             <>
                 <header className='mt-5'>
-                    <NavBar userName='User 1' />
+                    <NavBar userName={user.login} />
                 </header>
                 <TaskLayout />
             </>
@@ -30,7 +39,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
         res,
         authOptions
     )
-    console.log(token);
     if (!token) return {
         redirect: {
             destination: '/',
@@ -38,8 +46,18 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
         },
         props: {}
     }
-    else return {
-        props: {}
+    else {
+        const db = await getCollectionDB('ToDoUsers')
+        const user = await db.collection.findOne({ login: token.user?.name })
+        return {
+            props: {
+                user:{
+                    _id: user?._id.toString(),
+                    login: user?.login,
+                    tasks: user?.tasks || []
+                }
+            }
+        }
     }
 }
 
