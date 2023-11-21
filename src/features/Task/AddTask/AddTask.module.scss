@@ -1,0 +1,17 @@
+.addTaskForm{
+    background-color: #ffffffcd;
+    p{
+        margin-top: -1em;
+        margin-bottom: 2em;
+        text-align: right;
+        font-size: 1.1rem;
+    }
+    .description{
+        min-height: 120px;
+        max-height: 150px;
+    }
+    .addButton{
+        width: 200px;
+        padding-inline: 1rem;
+    }
+}

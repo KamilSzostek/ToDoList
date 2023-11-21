@@ -18,6 +18,9 @@ export interface ITask{
     name: string
     description?: string
     algorithm?: string[]
+    isDone: boolean
+    isDeleted: boolean
+    isExpanded: boolean
     dateTimeStart: string
     dateTimeEnd?: string
 }

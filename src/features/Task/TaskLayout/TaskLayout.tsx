@@ -16,8 +16,9 @@ const TaskLayout: FC = () => {
         {!showAddTask ? <BaseButton text='Dodaj zadanie' icon={faPlus} onClick={showAddTaskHandler} /> : null}
         <BaseButton text='Zwiń zadania' icon={faChevronUp} isDark />
       </div>
-        <TaskList/>
       {showAddTask ? <AddTask showHandler={showAddTaskHandler}/> : null}
+        <TaskList/>
+        <TaskList completedTaskList/>
 
     </main>
   );

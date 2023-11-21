@@ -1,0 +1,49 @@
+.taskButton{
+    width: 280px;
+    margin-bottom: .5em;
+    padding: .5em 1em;
+    background-color: var(--primary-light);
+    border-radius: 1em;
+    color: var(--trimary-color);
+    box-shadow: 0 0 5px var(--shadow);
+    transition: background .5s;
+    &:hover{
+        background-color: var(--primary-color);
+    }
+    span{
+        width: 50%;
+        font-size: 2rem;
+        cursor: default;
+    }
+    button{
+        padding: .25em;
+        background: #00000000;
+        border: none;
+        color: var(--trimary-color);
+        transition: color .5s;
+        svg{
+            width: 25px;
+            height: 25px;
+        }
+        &:hover{
+            color: #fff;
+        }
+    }
+}
+.taskDone{
+    background-color: var(--trimary-color);
+    &:hover{
+        background-color: #fff;
+    }
+    span{
+        color: var(--primary-light);
+    }
+    button{
+        color: var(--primary-light);
+    }
+    svg{
+        color: darkgreen;
+        width: 25px;
+        height: 25px;
+    }
+}

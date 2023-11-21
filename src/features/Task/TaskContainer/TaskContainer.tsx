@@ -9,7 +9,7 @@ interface ITaskContainerProps {
 const TaskContainer: FC<ITaskContainerProps> = ({children, title}) => {
     return (
         <div className={styles.taskContainer}>
-            {title ? (<h2>{title}</h2>) : null}
+            {title ? (<h2 className={styles.taskTitle}>{title}</h2>) : null}
             {children}
         </div>
     );
