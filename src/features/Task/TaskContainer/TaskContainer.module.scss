@@ -2,17 +2,25 @@
 .taskContainer{
     width: 300px;
     min-height: 150px;
-    max-height: 500px;
+    max-height: fit-content;
+    padding: 0;
     margin-block: 2em;
+    background-color: #ffffff87;
     border-radius: 1em;
-    box-shadow: 0 0 5px #40414585;
-    overflow-y: auto;
-    overflow-x: hidden;
+    box-shadow: 0 0 5px var(--shadow);
+    overflow: hidden;
 
     .taskTitle{
         @include title;
         margin-bottom: 0;
         background: var(--trimary-color);
         color: var(--primary-light);
+    }
+}
+.isSmaller{
+    width: 250px;
+    margin-inline: 2.5rem;
+    .taskTitle{
+        font-size: 1.9rem;
     }
 }

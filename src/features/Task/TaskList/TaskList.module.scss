@@ -1,26 +1,24 @@
 .taskList{
-    width: 300px;
-    min-height: 100px;
-    max-height: 500px;
-    margin-block: 1em;
+    min-height: 150px;
+    height: 100%;
     padding: 2em 1em;
     background-image: url('../../../../public/assets/todo.jpg');
-    background-position: center;
+    background-position: fixed;
     background-size: cover;
-    border-radius: 1em;
     text-align: center;
-    box-shadow: 0 0 5px var(--shadow);
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
     .emptyList{
+        padding: .5em 1em;
+        background-color: #ffffff7f;
         font-size: 1.7rem;
         text-decoration: underline;
+        backdrop-filter: 15px;
     }
 }
 .completed{
-    padding-top: 0;
-    padding: 0;
+    padding-bottom: 5em;
     background-image: url('../../../../public/assets/complete.jpg');
+    overflow: hidden;
 
     h2{
         padding-block: .25em;

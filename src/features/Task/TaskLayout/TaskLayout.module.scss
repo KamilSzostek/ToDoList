@@ -1,13 +1,23 @@
-.taskLayout{
-    display: inline-grid;
-    grid-template-columns: 100vw;
-    place-items: center;
-    .title{
-        width: clamp(300px, 300px + 2vw, 400px);
+.taskLayout {
+    width: 300px;
+    .title {
+        width: 100%;
         background-color: var(--primary-color);
         color: var(--trimary-color);
         border-radius: .5em;
         font-size: 2.5rem;
         font-weight: 600;
+    }
+    .rightButton{
+        margin-left: auto;
+    }
+}
+
+@media(min-width: 768px) {
+    .taskLayout {
+        width: 650px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
     }
 }

@@ -1,4 +1,3 @@
-import { Timestamp } from "mongodb"
 import { StaticImageData } from "next/image"
 
 export interface IImage {
@@ -17,7 +16,19 @@ export interface ITask{
     _id: string
     name: string
     description?: string
+    subTasks?: ISubTask[]
     algorithm?: string[]
+    isDone: boolean
+    isDeleted: boolean
+    isExpanded: boolean
+    dateTimeStart: string
+    dateTimeEnd?: string
+}
+export interface ISubTask{
+    _id: string
+    taskId: string
+    name: string
+    description?: string
     isDone: boolean
     isDeleted: boolean
     isExpanded: boolean

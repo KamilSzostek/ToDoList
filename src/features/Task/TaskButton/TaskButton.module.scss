@@ -1,5 +1,7 @@
 .taskButton{
     width: 280px;
+    display: flex;
+    align-items: center;
     margin-bottom: .5em;
     padding: .5em 1em;
     background-color: var(--primary-light);
@@ -24,6 +26,7 @@
         svg{
             width: 25px;
             height: 25px;
+            transition: transform .5s;
         }
         &:hover{
             color: #fff;
@@ -45,5 +48,45 @@
         color: darkgreen;
         width: 25px;
         height: 25px;
+        transition: transform .5s;
     }
+}
+
+.headerTask{
+    width: 100%;
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.subTask{
+    width: 250px;
+    z-index: 1;
+    span{
+        font-size: 1.5rem;
+    }
+    button{
+        font-size: 1.5rem;
+        svg{
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+.subTaskDescription{
+    width: 250px;
+    min-height: 50px;
+    margin-top: -1em;
+    padding-block: 1em;
+    background-color: #fff;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    font-size: 1.2rem;
+    text-align: center;
+    box-shadow: 0 0 5px var(--shadow);
+    z-index: 0;
+}
+
+.turn{
+    transform: rotate(180deg);
 }

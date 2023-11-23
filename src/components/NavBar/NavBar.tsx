@@ -18,7 +18,7 @@ const NavBar: FC<INavBarProps> = ({ userName }) => {
     router.push('/')
   }
   return (
-    <nav className='w-100 d-flex justify-content-between gap-5 align-items-center ps-2 pe-2'>
+    <nav className={`d-flex justify-content-between gap-5 align-items-center ps-2 pe-2 ${styles.navbar}`}>
       <span className='fs-1 fw-bold pt-1'><FontAwesomeIcon className={styles.icon} icon={faUser} />{userName}</span>
       <BaseButton text='Wyloguj' icon={faPowerOff} onClick={onSignOut} />
     </nav>

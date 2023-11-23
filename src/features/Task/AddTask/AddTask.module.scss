@@ -8,10 +8,19 @@
     }
     .description{
         min-height: 120px;
-        max-height: 150px;
     }
     .addButton{
         width: 200px;
         padding-inline: 1rem;
     }
 }
+.subTask{
+    p{
+        font-size: .9rem;
+    }
+    .description{
+        min-height: 100px;
+        max-height: 120px;
+    }
+}
+
