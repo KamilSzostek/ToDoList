@@ -18,6 +18,9 @@
         width: 650px;
         display: flex;
         flex-wrap: wrap;
+        align-items: self-start;
+        justify-content: space-between;
         gap: 30px;
+        margin-inline: 20px;
     }
 }

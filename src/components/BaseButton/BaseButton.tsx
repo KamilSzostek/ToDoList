@@ -12,12 +12,14 @@ interface IBaseButtonProps {
     onClick?: () => void
     specialClass?: string
     type?: "button" | "submit" | "reset" | undefined
+    isDisabled?: boolean
 }
 
-const BaseButton: FC<IBaseButtonProps> = ({ text, isDark, icon, urlPath, onClick, specialClass, type }) => {
+const BaseButton: FC<IBaseButtonProps> = ({ text, isDark, icon, urlPath, onClick, specialClass, type, isDisabled }) => {
     const bootstrapClasses = `d-flex gap-2 align-items-center justify-content-center`
     const style = `${bootstrapClasses} ${styles.basic} ${isDark ? styles.isDark : ''} ${specialClass}`
-    return urlPath ? (<Link className={style} href={urlPath}><span>{text}</span>{icon && <FontAwesomeIcon className={styles.icon} icon={icon}></FontAwesomeIcon>}</Link>) : (<button className={style} type={type} onClick={onClick}><span>{text}</span>{icon && <FontAwesomeIcon className={styles.icon} icon={icon}></FontAwesomeIcon>}</button>)
+    return urlPath ? (<Link className={style} href={urlPath}><span>{text}</span>{icon && <FontAwesomeIcon className={styles.icon} icon={icon}></FontAwesomeIcon>}</Link>) 
+    : (<button className={style} type={type} onClick={onClick} disabled={isDisabled ? true : false}><span>{text}</span>{icon && <FontAwesomeIcon className={styles.icon} icon={icon}></FontAwesomeIcon>}</button>)
 };
 
 export default BaseButton;

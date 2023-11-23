@@ -1,4 +1,4 @@
-.basic{
+.basic {
     width: 140px;
     height: 4.2rem;
     background-color: var(--trimary-color);
@@ -8,33 +8,59 @@
     font-weight: 600;
     box-shadow: 0 0 5px #4041457b;
     transition: .5s;
-    &:hover{
+
+    &:hover {
         background-color: #fff;
         border-color: var(--trimary-color);
         color: var(--primary-color);
-        .icon{
+
+        .icon {
             color: var(--primary-color);
         }
     }
-    .icon{
+
+    &:disabled {
+        background-color: #e0e0e0;
+        color: #0000007d;
+
+        .icon {
+            color: #0000007d;
+        }
+
+        &:hover {
+            background-color: #e0e0e0;
+            border: 2px solid #ffffff00;
+            color: #0000007d;
+
+            .icon {
+                color: #0000007d;
+            }
+        }
+    }
+
+    .icon {
         width: 17px;
         height: 17px;
         color: var(--primary-color);
         transition: .5s;
     }
 }
-.isDark{
+
+.isDark {
     background-color: var(--primary-light);
     color: var(--trimary-color);
-    &:hover{
+
+    &:hover {
         background-color: var(--primary-color);
         border-color: var(--primary-light);
         color: var(--trimary-color);
-        .icon{
+
+        .icon {
             color: var(--trimary-color);
         }
     }
-    .icon{
+
+    .icon {
         color: var(--trimary-color);
     }
 }

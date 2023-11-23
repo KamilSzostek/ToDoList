@@ -24,7 +24,7 @@ const validate = (values: IFormValues) => {
         errors.name = 'Nazwa jest wymagana.'
     else if (values.name.length < 3)
         errors.name = 'Nazwa jest zbyt krótka.'
-    else if (values.name.length > 20)
+    else if (values.name.length > 15)
         errors.name = 'Nazwa jest zbyt długa.'
     if (values.description && values.description?.length > 120)
         errors.description = 'Opis jest zbyt długi.'

@@ -34,13 +34,13 @@ const Task: FC<ITaskProps> = ({ task, isSubTask }) => {
             <>
                 <TaskButton task={task} asHeader />
                 <div className='w-100 d-flex align-items-center justify-content-center gap-2 mt-3 me-3'>
-                    {!task.isDone && < BaseButton specialClass='fs-4' text={showAddSubTask ? 'Zamknij podzadanie' : 'Dodaj podzadanie'} onClick={() => setShowAddSubTask(!showAddSubTask)} isDark />}
-                    {task.isDone || !isSubTask && <BaseButton specialClass='fs-4' text={!showAlgorihtm ? (task.algorithm ? 'Pokaż algorytm' : 'Dodaj algorytm') : 'Ukryj algorytm'} icon={faList} onClick={() => setShowAlgorithm(!showAlgorihtm)} />}
+                    {!task.isDone && < BaseButton specialClass='fs-4' text={showAddSubTask ? 'Zamknij podzadanie' : 'Dodaj podzadanie'} onClick={() => setShowAddSubTask(!showAddSubTask)} isDark isDisabled={showAlgorihtm ? true : false}/>}
+                    {task.isDone || !isSubTask && <BaseButton specialClass='fs-4' text={!showAlgorihtm ? (task.algorithm ? 'Pokaż algorytm' : 'Dodaj algorytm') : 'Ukryj algorytm'} icon={faList} onClick={() => setShowAlgorithm(!showAlgorihtm)} isDisabled={showAddSubTask ? true : false}/>}
                 </div>
                 {showAddSubTask && <AddTask taskId={task._id} showHandler={showAddSubTaskHandler} />}
                 {showAlgorihtm && <AddTaskAlgorithm task={task} />}
                 {!editDescription
-                    ? (<p className={`pt-3 pb-3 fs-4 text-dark text-center ${styles.taskDescription}`}>{!task.isDone && <button onClick={() => setEditDescription(true)}><FontAwesomeIcon icon={faEdit} /></button>}{task.description ? task.description : 'Brak opisu zadania'}</p>)
+                    ? (<p className={`fs-4 text-dark text-center ${styles.taskDescription}`}>{!task.isDone && <button onClick={() => setEditDescription(true)}><FontAwesomeIcon icon={faEdit} /></button>}{task.description ? task.description : 'Brak opisu zadania'}</p>)
                     : (<div className='d-flex flex-column align-items-center'> <textarea name="description" id="description" className={`w-75 pt-3 pb-3 fs-4 text-dark text-center ${styles.taskDescription}`} ref={descriptionRef}>{descriptionRef.current?.value}</textarea>
                         <BaseButton specialClass='w-75 mb-3' text='Zmień opis' onClick={changeDescription} />
                     </div>)}
