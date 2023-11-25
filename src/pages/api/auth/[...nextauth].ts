@@ -39,7 +39,7 @@ export const authOptions = {
             name: result.login,
             image: "",
           };
-        } else return {email: ''};
+        } else return {login: '', id: ''};
       },
     }),
   ],
