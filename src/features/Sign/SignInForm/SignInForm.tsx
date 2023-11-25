@@ -47,7 +47,7 @@ const SignInForm: FC = () => {
         <form className={`d-flex flex-column p-5 ${styles.signInForm}`} onSubmit={formik.handleSubmit}>
             <div className='d-flex flex-column  mb-3'>
                 {formik.errors.login ? (<div className={styles.error}>{formik.errors.login}</div>) : null}
-                <div className='d-flex justify-content-between'>
+                <div className='d-flex justify-content-evenly'>
                     <label htmlFor="login">Login: </label>
                     <input
                         id="login"
@@ -59,7 +59,7 @@ const SignInForm: FC = () => {
                     />
                 </div>
             </div>
-            <div className='d-flex justify-content-between mb-4'>
+            <div className='d-flex justify-content-evenly mb-4'>
                 <label htmlFor="password">Hasło: </label>
                 <input
                     id="password"
