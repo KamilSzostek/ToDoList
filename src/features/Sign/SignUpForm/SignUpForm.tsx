@@ -60,21 +60,26 @@ const SignInForm: FC = () => {
         validate,
         validateOnChange: false,
         onSubmit: async function onSubmit(values: IFormValues) {
-            setIsLoading(true)
-            const res = await fetch('/api/users', {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ login: values.login, password: values.password })
-            })
-            const result = await res.json()
-            if (result.status) {
-                const status = await signIn(
-                    'credentials',
-                    { redirect: false, login: values.login, password: values.password },
-                )
-                status?.ok && router.push('/todo')
+            try{
+                setIsLoading(true)
+                const res = await fetch('/api/users', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ login: values.login, password: values.password })
+                })
+                const result = await res.json()
+                if (result.status) {
+                    const status = await signIn(
+                        'credentials',
+                        { redirect: false, login: values.login, password: values.password },
+                    )
+                    status?.ok && router.push('/todo')
+                }
+            }
+            catch(err){
+                console.log(err);
             }
         }
     });
