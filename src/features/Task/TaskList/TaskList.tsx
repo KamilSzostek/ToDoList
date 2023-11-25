@@ -1,4 +1,4 @@
-import { FC, useContext, useMemo } from 'react';
+import { FC, useContext, useState } from 'react';
 import { StoreContext } from '@/store/StoreProvider';
 import TaskButton from '../TaskButton/TaskButton';
 import TaskContainer from '../TaskContainer/TaskContainer';
@@ -11,7 +11,7 @@ interface ITaskListProps {
 const TaskList: FC<ITaskListProps> = ({ completedTaskList }) => {
   const { tasks } = useContext(StoreContext)
 
-  const uncompletedTasks = useMemo(() => tasks?.filter(task => (completedTaskList ? task.isDone === true : task.isDone === false) && task.isDeleted === false && task.isExpanded === false), [tasks])
+  const uncompletedTasks = tasks?.filter(task => (completedTaskList ? task.isDone === true : task.isDone === false) && task.isDeleted === false && task.isExpanded === false)
   const listElements = uncompletedTasks?.map(task => (task.isDone ? <TaskButton key={task._id} task={task} /> : <TaskButton key={task._id} task={task} />))
 
   const taskListStyle = completedTaskList ? `d-flex flex-column align-items-center justify-content-center ${styles.taskList} ${styles.completed}` : `d-flex flex-column align-items-center ${styles.taskList}`
