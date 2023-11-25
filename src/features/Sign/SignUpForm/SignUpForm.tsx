@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Link from 'next/dist/client/link';
 import { useRouter } from 'next/router'
 import { useFormik } from 'formik';
 import { signIn } from 'next-auth/react';
@@ -76,7 +77,7 @@ const SignInForm: FC = () => {
     });
 
     return (
-        <form className={`d-flex flex-column p-5`} onSubmit={formik.handleSubmit}>
+        <form className={`d-flex flex-column p-5 ${styles.signInForm}`} onSubmit={formik.handleSubmit}>
             {formik.errors.login ? (<div className={styles.error}>{formik.errors.login}</div>) : null}
             <div className='d-flex flex-column  mb-3'>
                 <div className='d-flex justify-content-between'>
@@ -114,6 +115,7 @@ const SignInForm: FC = () => {
                 />
             </div>
             <BaseButton type='submit' specialClass='w-100 mb-5' text='Zarejestruj się' icon={faFingerprint} isDark />
+            <p className='fs-4 text-center'>Jeśli masz już konto <Link className='fs-2' href='/' onClick={()=>delete formik.errors.login}> Zaloguj się.</Link></p>
         </form>
     );
 };

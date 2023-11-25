@@ -55,7 +55,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
                 user:{
                     _id: user?._id.toString(),
                     login: user?.login,
-                    tasks: user?.tasks.filter((task: ITask) => task.isDeleted === false) || []
+                    tasks: user?.tasks?.filter((task: ITask) => task.isDeleted === false)
                 }
             }
         }

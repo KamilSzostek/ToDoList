@@ -16,6 +16,7 @@ export default async function handler(
           .insertOne({
             login: login,
             password: encrypt(password, process.env.CRYPTO_SECRET!),
+            tasks: []
           });
           res.status(200).json({
             message: 'User created',
