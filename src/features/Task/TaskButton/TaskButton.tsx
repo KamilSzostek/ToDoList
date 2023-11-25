@@ -36,7 +36,7 @@ const TaskButton: FC<ITaskButtonProps> = ({ task, asHeader, taskId }) => {
             <div className={taskButtonStyle}>
                 {task.isDone && <FontAwesomeIcon icon={faCircleCheck} />}
                 <div className='w-50 d-flex flex-column'>
-                    <abbr title={task.isDone ? 'Data zakończenia' : 'Data rozpoczęcia'}><time className={styles.taskDate} dateTime={task.isDone ? task.dateTimeEnd : task.dateTimeStart}>{task.isDone ? task.dateTimeEnd?.split(',')[0] : task.dateTimeStart.split(',')[0]}</time></abbr>
+                    <abbr title={task.isDone ? `Data zakończenia: ${task.dateTimeEnd}` : `Data rozpoczęcia: ${task.dateTimeStart}`}><time className={styles.taskDate} dateTime={task.isDone ? task.dateTimeEnd : task.dateTimeStart}>{task.isDone ? task.dateTimeEnd?.split(',')[0] : task.dateTimeStart.split(',')[0]}</time></abbr>
                     <abbr className={styles.taskName} title={task.name.length > 15 ? task.name : undefined}><span>{task.name.length > 15 ? `${task.name.substring(0, 12)}...` : task.name}</span></abbr>
                 </div>
                 {!task.isDone && <div>
