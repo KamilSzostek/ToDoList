@@ -1,4 +1,5 @@
-.taskButton{
+.taskButton {
+    position: relative;
     width: 280px;
     display: flex;
     align-items: center;
@@ -9,87 +10,144 @@
     color: var(--trimary-color);
     box-shadow: 0 0 5px var(--shadow);
     transition: background .5s;
-    &:hover{
+
+    &:hover {
         background-color: var(--primary-color);
     }
-    span{
-        width: 50%;
-        font-size: 2rem;
-        cursor: default;
-    }
-    button{
+
+    button {
         padding: .25em;
         background: #00000000;
         border: none;
         color: var(--trimary-color);
         transition: color .5s;
-        svg{
+
+        svg {
             width: 25px;
             height: 25px;
-            transition: transform .5s;
+            transition: transform .7s .2s;
         }
-        &:hover{
+
+        &:hover {
             color: #fff;
-            svg{
+            svg {
                 transform: scale(1.1);
+            }
+            .icon{
+                transform: rotate(180deg) scale(1.1);
             }
         }
     }
+
+    abbr {
+        text-decoration: none;
+        text-align: left;
+
+        .taskDate {
+            color: #ffffff74;
+            font-size: 1.2rem;
+            font-weight: bold;
+            opacity: .8;
+        }
+    }
+
+    .taskName {
+        text-decoration: none;
+        text-align: left;
+
+        span {
+            font-size: 2rem;
+            cursor: default;
+        }
+    }
 }
-.taskDone{
+
+.taskDone {
     background-color: var(--trimary-color);
-    &:hover{
+
+    &:hover {
         background-color: #fff;
     }
-    span{
+
+    span {
         color: var(--primary-light);
     }
-    button{
+
+    button {
         color: var(--primary-light);
     }
-    svg{
+
+    svg {
         color: darkgreen;
         width: 25px;
         height: 25px;
         transition: transform .5s;
     }
+
+    div {
+        text-align: center;
+
+        abbr {
+            text-align: center;
+            .taskDate {
+                color: var(--primary-light);
+            }
+        }
+
+        .taskName {
+            text-align: center;
+        }
+    }
 }
 
-.headerTask{
+.headerTask {
     width: 100%;
     margin-bottom: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-.subTask{
+.subTask {
     width: 250px;
     z-index: 1;
-    span{
-        font-size: 1.5rem;
+
+    .taskDate {
+        font-size: 1rem;
     }
-    button{
+
+    .taskName {
+        span {
+            font-size: 1.5rem;
+        }
+    }
+
+    button {
         font-size: 1.5rem;
-        svg{
+
+        svg {
             width: 20px;
             height: 20px;
         }
     }
 }
-.subTaskDescription{
-    width: 250px;
-    min-height: 50px;
-    margin-top: -1em;
-    padding: 1em;
-    background-color: #fff;
-    border-bottom-left-radius: 1em;
-    border-bottom-right-radius: 1em;
-    font-size: 1.2rem;
-    text-align: center;
-    box-shadow: 0 0 5px var(--shadow);
-    z-index: 0;
+
+.modal {
+    h2 {
+        padding: .5em .5em 0 .5em;
+        border-left: 10px solid var(--primary-light);
+        border-bottom: 1px solid var(--primary-light);
+        color: var(--primary-light);
+        font-size: 2.4rem;
+        font-weight: 600;
+    }
+
+    p {
+        margin: 1em 0;
+        font-size: 1.5rem;
+        text-align: center;
+    }
 }
 
-.turn{
+.turn {
     transform: rotate(180deg);
 }

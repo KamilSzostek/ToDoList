@@ -8,6 +8,8 @@
     background-color: #ffffff87;
     border-radius: 1em;
     box-shadow: 0 0 5px var(--shadow);
+    transform: translateY(-30px);
+    opacity: 0;
     overflow: hidden;
 
     .taskTitle{
@@ -22,5 +24,18 @@
     margin-inline: 2.5rem;
     .taskTitle{
         font-size: 1.9rem;
+    }
+}
+.moveDown{
+    animation: moveDown .5s forwards;
+}
+@keyframes moveDown {
+    from{
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
     }
 }

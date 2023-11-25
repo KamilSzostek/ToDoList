@@ -20,6 +20,9 @@ const StoreProvider: FC<Props> = ({ children }) => {
     const setTaskshandler = (newTasks: ITask[]) => setTasks(newTasks)
     const setLoginHandler = (newLogin: string) => setLogin(newLogin)
     useEffect(() => {
+        
+    },[])
+    useEffect(() => {
         fetch(`/api/users/${login}`, {
             method: 'PUT',
             headers: {

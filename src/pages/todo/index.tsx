@@ -8,6 +8,7 @@ import NavBar from '@/components/NavBar/NavBar'
 import { IUser } from '@/interfaces/interfaces';
 import { StoreContext } from '@/store/StoreProvider';
 import { getCollectionDB } from '@/helpers/dbConnection';
+import { ITask } from '@/interfaces/interfaces';
 
 interface IToDoProps {
     user: IUser
@@ -54,7 +55,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
                 user:{
                     _id: user?._id.toString(),
                     login: user?.login,
-                    tasks: user?.tasks || []
+                    tasks: user?.tasks.filter((task: ITask) => task.isDeleted === false) || []
                 }
             }
         }

@@ -24,7 +24,7 @@ const validate = (values: IFormValues) => {
         errors.name = 'Nazwa jest wymagana.'
     else if (values.name.length < 3)
         errors.name = 'Nazwa jest zbyt krótka.'
-    else if (values.name.length > 15)
+    else if (values.name.length > 25)
         errors.name = 'Nazwa jest zbyt długa.'
     if (values.description && values.description?.length > 120)
         errors.description = 'Opis jest zbyt długi.'
@@ -56,7 +56,7 @@ const AddTask: FC<IAddTaskProps> = ({ showHandler, taskId }) => {
                 _id: id,
                 name: values.name!,
                 description: values.description,
-                dateTimeStart: Date.now().toLocaleString(),
+                dateTimeStart: new Date().toLocaleString(),
                 isDeleted: false,
                 isExpanded: false,
                 isDone: false

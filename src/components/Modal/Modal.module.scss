@@ -1,0 +1,48 @@
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% - 50px));
+    width: 270px;
+    height: 150px;
+    border: 1px solid var(--primary-light);
+    border-right-width: 10px;
+    border-radius: 1em;
+    box-shadow:  0 0 5px var(--shadow);
+    transition: transform .5s;
+    overflow: hidden;
+    z-index: 11;
+}
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 10;
+}
+.comeIn{
+    animation: comeIn .5s forwards;
+}
+.comeOut{
+    animation: comeOut .5s forwards;  
+}
+@keyframes comeIn {
+    from{
+        transform: translate(-50%, calc(-50% - 50px));
+    }
+    to{
+        transform: translate(-50%, -50%);
+    }
+}
+@keyframes comeOut {
+    from{
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+    to{
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+}
