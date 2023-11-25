@@ -15,36 +15,31 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        try{
-          if (credentials) {
-            const client = await MongoClient.connect(`${process.env.MONGODB_CONNECTION_STRING}`
-            );
-            const users = client?.db().collection("ToDoUsers");
-            const result = await users.findOne({
-              login: credentials.login,
-            });
-            if (!result) {
-              client.close();
-              throw new Error("User didn't found with that login");
-            }
-            if (
-              decrypt(result.password, `${process.env.CRYPTO_SECRET}`) !==  credentials.password
-            ) {
-              client.close();
-              throw new Error("Password doesn't match.");
-            }
+        if (credentials) {
+          const client = await MongoClient.connect(`${process.env.MONGODB_CONNECTION_STRING}`
+          );
+          const users = client?.db().collection("ToDoUsers");
+          const result = await users.findOne({
+            login: credentials.login,
+          });
+          if (!result) {
             client.close();
-            return {
-              id: result._id.toString(),
-              email: "",
-              name: result.login,
-              image: "",
-            };
-          } else return null;
-        }
-        catch(err){
-          throw err;
-        }
+            throw new Error("User didn't found with that login");
+          }
+          if (
+            decrypt(result.password, `${process.env.CRYPTO_SECRET}`) !==  credentials.password
+          ) {
+            client.close();
+            throw new Error("Password doesn't match.");
+          }
+          client.close();
+          return {
+            id: result._id.toString(),
+            email: "",
+            name: result.login,
+            image: "",
+          };
+        } else return null;
       },
     }),
   ],
