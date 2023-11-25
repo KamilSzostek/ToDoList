@@ -1,10 +1,11 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Link from 'next/dist/client/link';
 import { useRouter } from 'next/router'
 import { useFormik } from 'formik';
 import { signIn } from 'next-auth/react';
 import BaseButton from '../../../components/BaseButton/BaseButton';
 import { faFingerprint } from '@fortawesome/free-solid-svg-icons';
+import CircleLoader from 'react-spinners/CircleLoader';
 import styles from '../SignInForm/SignInForm.module.scss'
 
 
@@ -49,6 +50,7 @@ const validate = async (values: IFormValues) => {
 
 const SignInForm: FC = () => {
     const router = useRouter()
+    const [isLoading, setIsLoading] = useState(false)
     const formik = useFormik({
         initialValues: {
             login: '',
@@ -58,6 +60,7 @@ const SignInForm: FC = () => {
         validate,
         validateOnChange: false,
         onSubmit: async function onSubmit(values: IFormValues) {
+            setIsLoading(true)
             const res = await fetch('/api/users', {
                 method: "POST",
                 headers: {
@@ -114,7 +117,7 @@ const SignInForm: FC = () => {
                     value={formik.values.repassword}
                 />
             </div>
-            <BaseButton type='submit' specialClass='w-100 mb-5' text='Zarejestruj się' icon={faFingerprint} isDark />
+            {isLoading ? <div className='w-100 d-flex justify-content-center align-items-center'><CircleLoader color="#000" loading/></div> : <BaseButton type='submit' specialClass='w-100 mb-5' text='Zarejestruj się' icon={faFingerprint} isDark /> }
             <p className='fs-4 text-center'>Jeśli masz już konto <Link className='fs-2' href='/' onClick={()=>delete formik.errors.login}> Zaloguj się.</Link></p>
         </form>
     );

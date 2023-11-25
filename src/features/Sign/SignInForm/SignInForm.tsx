@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { useFormik } from 'formik';
 import BaseButton from '../../../components/BaseButton/BaseButton';
 import { faFingerprint } from '@fortawesome/free-solid-svg-icons';
-
+import { CircleLoader } from 'react-spinners';
 import styles from './SignInForm.module.scss'
 
 interface IFormValues {
@@ -22,6 +22,7 @@ const validate = (values: IFormValues) => {
 
 const SignInForm: FC = () => {
     const router = useRouter()
+    const [isLoading, setIsLoading] = useState(false)
     const formik = useFormik({
         initialValues: {
             login: '',
@@ -30,13 +31,17 @@ const SignInForm: FC = () => {
         validate,
         validateOnChange: false,
         onSubmit: async (values: IFormValues) => {
+            setIsLoading(true)
             const status = await signIn(
                 'credentials',
                 { redirect: false, login: values.login, password: values.password },
             )
-            if (status?.ok)
+            if (status?.ok){
                 router.push('/todo')
+                setIsLoading(false)
+            }
             else {
+                setIsLoading(false)
                 formik.errors.login = 'Nieprawidłowy login lub hasło.';
                 values.login = ''
                 values.password = ''
@@ -70,7 +75,7 @@ const SignInForm: FC = () => {
                     value={formik.values.password}
                 />
             </div>
-            <BaseButton type='submit' specialClass='w-100 mb-5' text='Zaloguj się' icon={faFingerprint} isDark />
+            {!isLoading ? <BaseButton type='submit' specialClass='w-100 mb-5' text='Zaloguj się' icon={faFingerprint} isDark /> : <div className='w-100 d-flex justify-content-center align-items-center'><CircleLoader color="#000" loading/></div>}
             <p className='fs-4 text-center'>lub jeśli nie posiadasz konta <Link className='fs-2' href='/registration' onClick={()=>delete formik.errors.login}> Zarejestruj się.</Link></p>
         </form>
     );
