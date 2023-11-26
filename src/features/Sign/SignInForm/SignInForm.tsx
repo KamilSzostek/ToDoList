@@ -79,7 +79,7 @@ const SignInForm: FC = () => {
                     value={formik.values.password}
                 />
             </div>
-            {!isLoading ? <BaseButton type='submit' specialClass='w-100 mb-5' text='Zaloguj się' icon={faFingerprint} isDark /> : <div className='w-100 d-flex justify-content-center align-items-center'><CircleLoader color="#000" loading/></div>}
+            <BaseButton type='submit' specialClass='w-100 mb-5' text='Zaloguj się' icon={faFingerprint} element={<CircleLoader size={30} color="#fff" loading/>} isLoading={isLoading} isDark />
             <p className='fs-4 text-center'>lub jeśli nie posiadasz konta <Link className='fs-2' href='/registration' onClick={()=>delete formik.errors.login}> Zarejestruj się.</Link></p>
         </form>
     );
