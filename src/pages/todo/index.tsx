@@ -35,22 +35,21 @@ const ToDo: FC<IToDoProps> = ({ user }) => {
 export default ToDo;
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-    // const token = await getServerSession(
-    //     req,
-    //     res,
-    //     authOptions
-    // )
-    // if (!token) return {
-    //     redirect: {
-    //         destination: '/',
-    //         permament: false
-    //     },
-    //     props: {}
-    // }
-    // else {
+    const token = await getServerSession(
+        req,
+        res,
+        authOptions
+    )
+    if (!token) return {
+        redirect: {
+            destination: '/',
+            permament: false
+        },
+        props: {}
+    }
+    else {
         const db = await getCollectionDB('ToDoUsers')
-        // const user = await db.collection.findOne({ login: token.user?.name })
-        const user = await db.collection.findOne({ login: 'Kamil1' })
+        const user = await db.collection.findOne({ login: token.user?.name })
         return {
             props: {
                 user:{
@@ -61,5 +60,5 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
             }
         }
     }
-
+}
 
