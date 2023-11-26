@@ -1,0 +1,10 @@
+.taskTime{
+    margin-top: .5em;
+    margin-right: 2em;
+    text-align: right;
+    font-size: 1.2rem;
+    opacity: .7;
+    span:nth-child(2){
+        font-weight: bold;
+    }
+}

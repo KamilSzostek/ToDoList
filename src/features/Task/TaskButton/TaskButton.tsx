@@ -19,14 +19,18 @@ const TaskButton: FC<ITaskButtonProps> = ({ task, asHeader, taskId }) => {
     const [showModal, setShowModal] = useState(false)
     const [modalType, setModalType] = useState('')
     const closeModal = () => setShowModal(false)
+    const finishDate = task.dateTimeEnd && new Date(task.dateTimeEnd).toLocaleDateString() 
+    const startDate = new Date(task.dateTimeStart).toLocaleDateString()
+    const finishDateTime = task.dateTimeEnd && new Date(task.dateTimeEnd).toLocaleString() 
+    const startDateTime = new Date(task.dateTimeStart).toLocaleString()
     function openModal(type: string) {
         setModalType(type)
         setShowModal(true)
     }
-    const setTaskDone = () => { tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === task._id ? { ...mappedTask, isDone: true, dateTimeEnd: new Date().toLocaleString() } : mappedTask))); setShowModal(false) }
+    const setTaskDone = () => { tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === task._id ? { ...mappedTask, isDone: true, dateTimeEnd: Date.now() } : mappedTask))); setShowModal(false) }
     const setTaskDeleted = () => { tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === task._id ? { ...mappedTask, isDeleted: true } : mappedTask))); setShowModal(false) }
     const setTaskExpanded = () => tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === task._id ? { ...mappedTask, isExpanded: !mappedTask.isExpanded } : mappedTask)))
-    const setSubTaskDone = () => { tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === taskId ? { ...mappedTask, subTasks: mappedTask.subTasks?.map(subTask => (subTask._id === task._id ? { ...subTask, isDone: true, dateTimeEnd: new Date().toLocaleString() } : subTask)) } : mappedTask))); setShowModal(false) }
+    const setSubTaskDone = () => { tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === taskId ? { ...mappedTask, subTasks: mappedTask.subTasks?.map(subTask => (subTask._id === task._id ? { ...subTask, isDone: true, dateTimeEnd: Date.now() } : subTask)) } : mappedTask))); setShowModal(false) }
     const setSubTaskDeleted = () => { tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === taskId ? { ...mappedTask, subTasks: mappedTask.subTasks?.map(subTask => (subTask._id === task._id ? { ...subTask, isDeleted: true } : subTask)) } : mappedTask))); setShowModal(false) }
     const setSubTaskExpanded = () => tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === taskId ? { ...mappedTask, subTasks: mappedTask.subTasks?.map(subTask => (subTask._id === task._id ? { ...subTask, isExpanded: !subTask.isExpanded } : subTask)) } : mappedTask)))
 
@@ -36,7 +40,7 @@ const TaskButton: FC<ITaskButtonProps> = ({ task, asHeader, taskId }) => {
             <div className={taskButtonStyle}>
                 {task.isDone && <FontAwesomeIcon icon={faCircleCheck} />}
                 <div className='w-50 d-flex flex-column'>
-                    <abbr title={task.isDone ? `Data zakończenia: ${task.dateTimeEnd}` : `Data rozpoczęcia: ${task.dateTimeStart}`}><time className={styles.taskDate} dateTime={task.isDone ? task.dateTimeEnd : task.dateTimeStart}>{task.isDone ? task.dateTimeEnd?.split(',')[0] : task.dateTimeStart.split(',')[0]}</time></abbr>
+                    {!task.isDone && <abbr title={`Data rozpoczęcia: ${startDateTime}`}><time className={styles.taskDate} dateTime={startDateTime}>{startDate}</time></abbr>}
                     <abbr className={styles.taskName} title={task.name.length > 15 ? task.name : undefined}><span>{task.name.length > 15 ? `${task.name.substring(0, 12)}...` : task.name}</span></abbr>
                 </div>
                 {!task.isDone && <div>

@@ -21,8 +21,8 @@ export interface ITask{
     isDone: boolean
     isDeleted: boolean
     isExpanded: boolean
-    dateTimeStart: string
-    dateTimeEnd?: string
+    dateTimeStart: number
+    dateTimeEnd?: number
 }
 export interface ISubTask{
     _id: string
@@ -32,6 +32,6 @@ export interface ISubTask{
     isDone: boolean
     isDeleted: boolean
     isExpanded: boolean
-    dateTimeStart: string
-    dateTimeEnd?: string
+    dateTimeStart: number
+    dateTimeEnd?: number
 }

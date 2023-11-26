@@ -56,7 +56,7 @@ const AddTask: FC<IAddTaskProps> = ({ showHandler, taskId }) => {
                 _id: id,
                 name: values.name!,
                 description: values.description,
-                dateTimeStart: new Date().toLocaleString(),
+                dateTimeStart: Date.now(),
                 isDeleted: false,
                 isExpanded: false,
                 isDone: false
