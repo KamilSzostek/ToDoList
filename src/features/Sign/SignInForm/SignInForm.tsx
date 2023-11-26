@@ -32,6 +32,10 @@ const SignInForm: FC = () => {
         validateOnChange: false,
         onSubmit: async (values: IFormValues) => {
             setIsLoading(true)
+            let i = 1
+            setInterval(()=>{
+                console.log(i++);
+            }, 1000)
             const status = await signIn(
                 'credentials',
                 { redirect: false, login: values.login, password: values.password },
