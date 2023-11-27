@@ -29,7 +29,7 @@ const TaskButton: FC<ITaskButtonProps> = ({ task, asHeader, taskId }) => {
     const setTaskDeleted = () => { tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === task._id ? { ...mappedTask, isDeleted: true } : mappedTask))); setShowModal(false) }
     const setTaskExpanded = () => {
         tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === task._id ? { ...mappedTask, expandTime: mappedTask.isExpanded === false ? Date.now() : 0, isExpanded: !mappedTask.isExpanded} : mappedTask)))
-        window.scrollTo({
+        task.isExpanded === false && window.scrollTo({
             top: 0,
             behavior: 'smooth'
         })
