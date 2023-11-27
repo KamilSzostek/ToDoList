@@ -19,9 +19,7 @@ const TaskButton: FC<ITaskButtonProps> = ({ task, asHeader, taskId }) => {
     const [showModal, setShowModal] = useState(false)
     const [modalType, setModalType] = useState('')
     const closeModal = () => setShowModal(false)
-    const finishDate = task.dateTimeEnd && new Date(task.dateTimeEnd).toLocaleDateString() 
     const startDate = new Date(task.dateTimeStart).toLocaleDateString()
-    const finishDateTime = task.dateTimeEnd && new Date(task.dateTimeEnd).toLocaleString() 
     const startDateTime = new Date(task.dateTimeStart).toLocaleString()
     function openModal(type: string) {
         setModalType(type)
@@ -29,7 +27,13 @@ const TaskButton: FC<ITaskButtonProps> = ({ task, asHeader, taskId }) => {
     }
     const setTaskDone = () => { tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === task._id ? { ...mappedTask, isDone: true, dateTimeEnd: Date.now() } : mappedTask))); setShowModal(false) }
     const setTaskDeleted = () => { tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === task._id ? { ...mappedTask, isDeleted: true } : mappedTask))); setShowModal(false) }
-    const setTaskExpanded = () => tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === task._id ? { ...mappedTask, isExpanded: !mappedTask.isExpanded } : mappedTask)))
+    const setTaskExpanded = () => {
+        tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === task._id ? { ...mappedTask, expandTime: mappedTask.isExpanded === false ? Date.now() : 0, isExpanded: !mappedTask.isExpanded} : mappedTask)))
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
     const setSubTaskDone = () => { tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === taskId ? { ...mappedTask, subTasks: mappedTask.subTasks?.map(subTask => (subTask._id === task._id ? { ...subTask, isDone: true, dateTimeEnd: Date.now() } : subTask)) } : mappedTask))); setShowModal(false) }
     const setSubTaskDeleted = () => { tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === taskId ? { ...mappedTask, subTasks: mappedTask.subTasks?.map(subTask => (subTask._id === task._id ? { ...subTask, isDeleted: true } : subTask)) } : mappedTask))); setShowModal(false) }
     const setSubTaskExpanded = () => tasks && setTaskshandler && setTaskshandler(tasks.map(mappedTask => (mappedTask._id === taskId ? { ...mappedTask, subTasks: mappedTask.subTasks?.map(subTask => (subTask._id === task._id ? { ...subTask, isExpanded: !subTask.isExpanded } : subTask)) } : mappedTask)))

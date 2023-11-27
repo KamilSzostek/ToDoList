@@ -15,10 +15,10 @@ interface IToDoProps {
 }
 
 const ToDo: FC<IToDoProps> = ({ user }) => {
-    const context = useContext(StoreContext)
+    const {setLoginHandler, setTaskshandler} = useContext(StoreContext)
     useEffect(() => {
-        context.setLoginHandler && context.setLoginHandler(user.login)
-        context.setTaskshandler && context.setTaskshandler(user.tasks)
+        setLoginHandler && setLoginHandler(user.login)
+        setTaskshandler && setTaskshandler(user.tasks)
     }, [user])
     return (
         <BaseLayout>

@@ -23,6 +23,7 @@ export interface ITask{
     isExpanded: boolean
     dateTimeStart: number
     dateTimeEnd?: number
+    expandTime?: number
 }
 export interface ISubTask{
     _id: string
