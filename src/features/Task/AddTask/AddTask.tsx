@@ -61,7 +61,7 @@ const AddTask: FC<IAddTaskProps> = ({ showHandler, taskId }) => {
                 isExpanded: false,
                 isDone: false
             }
-            taskId ? addSubTask({...initialTask, taskId}) : addTask(initialTask)
+            taskId ? addSubTask({...initialTask, taskId}) : addTask({...initialTask, expandTime: Date.now(), isExpanded: true})
             showHandler && showHandler()
         }
     })
